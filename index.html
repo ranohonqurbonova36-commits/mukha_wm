@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student & Developer | Premium Portfolio</title>
+    <!-- Tailwind CSS for utility and speed -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --neon: #e2ff31;
+            --dark: #050505;
+            --zinc-800: #27272a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass:hover {
+            border-color: var(--neon);
+            box-shadow: 0 0 30px rgba(226, 255, 49, 0.1);
+        }
+
+        /* Neon Glow Text */
+        .neon-text {
+            color: var(--neon);
+            text-shadow: 0 0 10px rgba(226, 255, 49, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon); }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .progress-bar {
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.1, 0, 0.2, 1);
+        }
+
+        /* Hide horizontal scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.29.2",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body class="selection:bg-[#e2ff31] selection:text-black">
+
+    <!-- Header / Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-8">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-[#e2ff31] rounded-xl flex items-center justify-center text-black font-black text-xl">S</div>
+                <span class="text-xl font-black text-white tracking-tighter uppercase">STUDENT.DEV</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-10 items-center">
+                <a href="#services" class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 hover:text-[#e2ff31] transition-colors">Xizmatlar</a>
+                <a href="#skills" class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 hover:text-[#e2ff31] transition-colors">Bilimlar</a>
+                <a href="#journey" class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 hover:text-[#e2ff31] transition-colors">Yo'nalish</a>
+                <a href="#projects" class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 hover:text-[#e2ff31] transition-colors">Loyihalar</a>
+                <button class="bg-[#e2ff31] text-black px-6 py-2 rounded-lg font-black text-[10px] uppercase tracking-widest hover:scale-105 active:scale-95 transition-all">Aloqa</button>
+            </div>
+
+            <button class="md:hidden text-[#e2ff31]" id="menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden px-6">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#e2ff3110] rounded-full blur-[150px] -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/5 rounded-full blur-[120px] -z-10"></div>
+        
+        <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <div class="inline-flex items-center space-x-2 bg-zinc-900 px-4 py-2 rounded-full mb-8 border border-zinc-800">
+                    <span class="w-2 h-2 bg-[#e2ff31] rounded-full animate-pulse"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">Computer Science Talabasi</span>
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
+                    O'RGANISH. <br />
+                    <span class="neon-text italic">YARATISH.</span> <br />
+                    RIVOJLANISH.
+                </h1>
+                
+                <p class="text-zinc-400 text-lg md:text-xl mb-12 max-w-xl leading-relaxed">
+                    Men o'z bilimlarimni amaliyotda qo'llashni yaxshi ko'radigan talaba-dasturchiman. Har bir qator kod - bu yangi imkoniyat.
+                </p>
+                
+                <div class="flex flex-wrap gap-6">
+                    <a href="#projects" class="bg-white text-black px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#e2ff31] transition-all">
+                        Loyihalarni ko'rish
+                    </a>
+                    <div class="flex items-center space-x-6">
+                        <a href="#" class="text-zinc-500 hover:text-[#e2ff31] transition-colors"><i data-lucide="github"></i></a>
+                        <a href="#" class="text-zinc-500 hover:text-[#e2ff31] transition-colors"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden lg:block floating reveal" style="transition-delay: 200ms;">
+                <div class="relative group">
+                    <div class="absolute -inset-4 bg-[#e2ff3110] rounded-[3rem] blur-2xl"></div>
+                    <div class="relative z-10 aspect-square bg-zinc-900 rounded-[3rem] overflow-hidden border border-zinc-800">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" alt="Dasturchi" class="w-full h-full object-cover grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute bottom-10 left-10 right-10 p-6 glass rounded-2xl">
+                            <div class="text-xs font-black text-[#e2ff31] uppercase tracking-widest mb-1">Oxirgi bilim</div>
+                            <div class="text-xl font-bold uppercase tracking-tight">System Architecture</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-zinc-900/20 border-y border-zinc-800 px-6">
+        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
+            <div class="text-center reveal">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">3.94</div>
+                <div class="text-[#e2ff31] text-[10px] font-black uppercase tracking-[0.4em]">GPA</div>
+            </div>
+            <div class="text-center reveal" style="transition-delay: 100ms;">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">1.2k</div>
+                <div class="text-[#e2ff31] text-[10px] font-black uppercase tracking-[0.4em]">GitHub Commits</div>
+            </div>
+            <div class="text-center reveal" style="transition-delay: 200ms;">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">98/120</div>
+                <div class="text-[#e2ff31] text-[10px] font-black uppercase tracking-[0.4em]">Kreditlar</div>
+            </div>
+            <div class="text-center reveal" style="transition-delay: 300ms;">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2 tracking-tighter">∞</div>
+                <div class="text-[#e2ff31] text-[10px] font-black uppercase tracking-[0.4em]">Qiziqish</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-32 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter">MENING YO'NALISHLARIM</h2>
+                <p class="text-zinc-500 max-w-2xl mx-auto text-lg leading-relaxed">Universitet bilimlarini real loyihalar bilan birlashtiraman.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="glass p-10 rounded-[2.5rem] reveal">
+                    <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center text-[#e2ff31] mb-8 border border-zinc-800">
+                        <i data-lucide="laptop"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Web Dasturlash</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">React va Node.js yordamida zamonaviy veb-ilovalarni yaratish.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass p-10 rounded-[2.5rem] reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center text-[#e2ff31] mb-8 border border-zinc-800">
+                        <i data-lucide="palette"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">UI/UX Dizayn</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Minimalist va premium darajadagi foydalanuvchi interfeyslari.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass p-10 rounded-[2.5rem] reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center text-[#e2ff31] mb-8 border border-zinc-800">
+                        <i data-lucide="cpu"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Algoritmlar</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Ma'lumotlar tuzilmasi va samarali kod yozish bo'yicha tadqiqotlar.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="glass p-10 rounded-[2.5rem] reveal" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center text-[#e2ff31] mb-8 border border-zinc-800">
+                        <i data-lucide="book-open"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Peer Tutoring</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Laboratoriya darslarida tengdoshlarimga yordam berish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 bg-zinc-900/30 px-6">
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 tracking-tighter">TEXNIK KO'NIKMALAR</h2>
+                    <div class="space-y-10">
+                        <!-- Skill -->
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm font-black uppercase tracking-widest text-zinc-300">JavaScript / React</span>
+                                <span class="text-[#e2ff31] font-black tracking-tighter">95%</span>
+                            </div>
+                            <div class="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-[#e2ff31]" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <!-- Skill -->
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm font-black uppercase tracking-widest text-zinc-300">HTML / CSS (Tailwind)</span>
+                                <span class="text-[#e2ff31] font-black tracking-tighter">98%</span>
+                            </div>
+                            <div class="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-[#e2ff31]" data-width="98%"></div>
+                            </div>
+                        </div>
+                        <!-- Skill -->
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm font-black uppercase tracking-widest text-zinc-300">Node.js / SQL</span>
+                                <span class="text-[#e2ff31] font-black tracking-tighter">80%</span>
+                            </div>
+                            <div class="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full bg-[#e2ff31]" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 reveal" style="transition-delay: 300ms;">
+                    <div class="glass p-8 rounded-3xl flex flex-col items-center text-center">
+                        <i data-lucide="layers" class="text-[#e2ff31] mb-4"></i>
+                        <div class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Arxitektura</div>
+                    </div>
+                    <div class="glass p-8 rounded-3xl flex flex-col items-center text-center">
+                        <i data-lucide="terminal" class="text-[#e2ff31] mb-4"></i>
+                        <div class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Algoritmlar</div>
+                    </div>
+                    <div class="glass p-8 rounded-3xl flex flex-col items-center text-center">
+                        <i data-lucide="code-2" class="text-[#e2ff31] mb-4"></i>
+                        <div class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Toza Kod</div>
+                    </div>
+                    <div class="glass p-8 rounded-3xl flex flex-col items-center text-center">
+                        <i data-lucide="git-branch" class="text-[#e2ff31] mb-4"></i>
+                        <div class="text-[10px] font-black uppercase tracking-widest text-zinc-400">Git / GitHub</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer class="py-32 px-6">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto glass rounded-[3rem] p-10 md:p-20 relative overflow-hidden reveal">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-[#e2ff3105] rounded-full blur-[100px] -z-10"></div>
+                
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">MEN BILAN <br /><span class="text-[#e2ff31]">BOG'LANING</span></h2>
+                        <p class="text-zinc-400 mb-12">Yangi loyihalar yoki universitet tadqiqotlari bo'yicha hamkorlikka tayyorman.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-[#e2ff31]">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div class="font-bold">talaba@alexdev.uz</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Ismingiz" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-6 py-4 focus:outline-none focus:border-[#e2ff31] transition-colors">
+                        <textarea rows="4" placeholder="Sizning xabaringiz" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-6 py-4 focus:outline-none focus:border-[#e2ff31] transition-colors resize-none"></textarea>
+                        <button class="w-full bg-[#e2ff31] text-black py-4 rounded-xl font-black uppercase tracking-widest">YUBORISH</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Animations and Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/90', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-zinc-800');
+                nav.classList.remove('bg-transparent', 'py-8');
+            } else {
+                nav.classList.remove('bg-black/90', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-zinc-800');
+                nav.classList.add('bg-transparent', 'py-8');
+            }
+        });
+
+        // Reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger skill bars if they are in the card
+                    const progressBars = entry.target.querySelectorAll('.progress-bar');
+                    progressBars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-width');
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile Menu Logic (Simple)
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            alert('Mobil menyu hozircha dizayn bosqichida :)');
+        });
+    </script>
+</body>
+</html>
